@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二手车交易平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        /* 虚化背景 */
+        body {
+            background-image: url("https://picsum.photos/id/1071/1920/1080");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.85);
+            z-index: -1;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #222;
+            color: white;
+            padding: 12px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+
+        /* LOGO */
+        .logo {
+            height: 40px;
+        }
+
+        /* 导航菜单 */
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 6px 10px;
+        }
+
+        .nav-menu a:hover {
+            background: #444;
+            border-radius: 4px;
+        }
+
+        /* 搜索框 */
+        .search-box {
+            padding: 6px 10px;
+            border: none;
+            border-radius: 4px;
+            outline: none;
+            width: 220px;
+        }
+
+        /* 内容容器 */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* 标题 */
+        .page-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #222;
+        }
+
+        /* 三个板块 */
+        .box-group {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .box {
+            border: 2px solid #333;
+            padding: 30px;
+            /* 淡蓝色渐变背景 */
+            background: linear-gradient(135deg, #bfdbfe 0%, #eff6ff 100%);
+            border-radius: 6px;
+        }
+
+        .box h2 {
+            margin-bottom: 15px;
+            color: #c0392b;
+        }
+
+        .box p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 10px;
+                padding: 15px;
+            }
+
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 导航栏 + LOGO -->
+    <div class="navbar">
+        <img src="屏幕截图 2026-04-11 191219.png" alt="平台LOGO" class="logo">
+        <div class="nav-menu">
+            <a href="#">首页</a>
+            <a href="#" onclick="login()">登录</a>
+            <a href="#" onclick="register()">注册</a>
+            <a href="#" onclick="myCar()">我的汽车</a>
+            <input type="text" class="search-box" placeholder="输入车型/品牌搜索...">
+        </div>
+    </div>
+
+    <!-- 内容区域 -->
+    <div class="container">
+        <h1 class="page-title">二手车交易平台 - 放心选好车</h1>
+
+        <!-- 三个板块 -->
+        <div class="box-group">
+            <div class="box">
+                <h2>平台介绍</h2>
+                <p>本平台致力于为买家和卖家提供安全、透明、高效的二手车交易服务。所有车辆经过严格检测，杜绝事故车、水泡车、火烧车，让买家买得放心，卖家卖得省心。</p>
+            </div>
+
+            <div class="box">
+                <h2>买家服务</h2>
+                <p>买家可通过搜索快速查找心仪车型，支持在线看车、预约试驾、价格对比。平台提供第三方检测报告、金融贷款、过户代办等一站式服务。</p>
+            </div>
+
+            <div class="box">
+                <h2>卖家服务</h2>
+                <p>卖家可在“我的汽车”栏目免费发布车辆信息，填写车辆详情、上传照片、设置售价。平台拥有海量精准买家，快速成交，价格透明无套路。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 简单交互功能
+        function login() {
+            alert("跳转到登录页面");
+        }
+        function register() {
+            alert("跳转到注册页面");
+        }
+        function myCar() {
+            alert("打开我的汽车 - 可发布/管理二手车信息");
+        }
+
+        // 搜索功能
+        document.querySelector(".search-box").addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+                let kw = this.value.trim();
+                if (kw) {
+                    alert("你搜索的内容：" + kw);
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
