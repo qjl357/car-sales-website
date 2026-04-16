@@ -87,7 +87,7 @@
 </div>
 
 <script>
-    // Image preview
+    
     const fileInput = document.getElementById('carImage');
     const previewDiv = document.getElementById('preview');
     fileInput.onchange = function() {
@@ -103,7 +103,7 @@
         }
     };
 
-    // Form submission
+   
     const form = document.getElementById('carForm');
     const msg = document.getElementById('message');
     form.onsubmit = function(e) {
