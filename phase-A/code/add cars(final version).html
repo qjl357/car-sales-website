@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Vehicle</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #222;
+            color: white;
+            padding: 12px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+        .logo {
+            height: 40px;
+        }
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 6px 10px;
+        }
+        .nav-menu a:hover {
+            background: #444;
+            border-radius: 4px;
+        }
+        .logo-link {
+            display: inline-flex;
+            line-height: 0;
+            text-decoration: none;
+        }
+        .logo-link:hover {
+            opacity: 0.9;
+        }
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 10px;
+                padding: 15px;
+            }
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+        body {
+            margin: 0;
+            background: linear-gradient(135deg, #052659 0%, #082f72 100%);
+            font-family: "Microsoft YaHei", 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+        }
+        .page-wrap {
+            padding: 30px 20px;
+        }
+        .box {
+            background: white;
+            width: 350px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 0;
+        }
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+        select, input {
+            width: 100%;
+            padding: 6px;
+            margin-top: 3px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 8px;
+            background: #0a2a44;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .msg {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+            color: green;
+        }
+        img {
+            margin-top: 8px;
+            max-width: 100%;
+            max-height: 80px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+<div class="navbar">
+  <a href="Homepage.html" class="logo-link" title="Back to home">
+    <img src="logo.png" alt="Platform LOGO" class="logo">
+  </a>
+  <div class="nav-menu">
+    <a href="Homepage.html">Home</a>
+    <a href="SearchPage.html">Search Cars</a>
+    <a href="login.html">Login</a>
+    <a href="add%20cars%28final%20version%29.html">Post a Car</a>
+  </div>
+</div>
+<div class="page-wrap">
+<div class="box">
+    <h2>Add Vehicle</h2>
+    <form id="carForm">
+        <label>Color</label>
+        <select id="color">
+            <option value="">Select</option>
+            <option>White</option><option>Gray</option><option>Yellow</option>
+            <option>Pink</option><option>Red</option><option>Purple</option>
+            <option>Green</option><option>Blue</option><option>Brown</option>
+            <option>Black</option><option>Other</option>
+        </select>
+
+        <label>Model</label>
+        <input type="text" id="model" placeholder="e.g. BMW X5">
+
+        <label>Year (4 digits)</label>
+        <input type="text" id="year" placeholder="2023" maxlength="4">
+
+        <label>Location</label>
+        <input type="text" id="location" placeholder="e.g. Beijing">
+
+        <label>Price (¥)</label>
+        <input type="text" id="price" placeholder="199900">
+
+        <label>Car Image</label>
+        <input type="file" id="carImage" accept="image/*">
+        <div id="preview"></div>
+
+        <button type="submit">Submit</button>
+    </form>
+    <div id="message" class="msg"></div>
+</div>
+</div>
+
+<script>
+    const fileInput = document.getElementById('carImage');
+    const previewDiv = document.getElementById('preview');
+    fileInput.onchange = function() {
+        const file = fileInput.files[0];
+        if (file && file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                previewDiv.innerHTML = '<img src="' + e.target.result + '">';
+            };
+            reader.readAsDataURL(file);
+        } else {
+            previewDiv.innerHTML = '';
+        }
+    };
+
+    const form = document.getElementById('carForm');
+    const msg = document.getElementById('message');
+    form.onsubmit = function(e) {
+        e.preventDefault();
+
+        const color = document.getElementById('color').value;
+        const model = document.getElementById('model').value.trim();
+        const year = document.getElementById('year').value.trim();
+        const location = document.getElementById('location').value.trim();
+        const price = document.getElementById('price').value.trim();
+
+        if (!color) { msg.innerText = 'Please select a color'; msg.style.color = 'red'; return; }
+        if (!model) { msg.innerText = 'Please enter the model'; msg.style.color = 'red'; return; }
+        if (!year) { msg.innerText = 'Please enter the year'; msg.style.color = 'red'; return; }
+        if (year.length !== 4 || isNaN(year)) { msg.innerText = 'Year must be 4 digits'; msg.style.color = 'red'; return; }
+        if (!location) { msg.innerText = 'Please enter the location'; msg.style.color = 'red'; return; }
+        if (!price) { msg.innerText = 'Please enter the price'; msg.style.color = 'red'; return; }
+        if (isNaN(price) || Number(price) < 0) { msg.innerText = 'Price must be a valid number'; msg.style.color = 'red'; return; }
+
+        msg.innerText = 'Vehicle added successfully!';
+        msg.style.color = 'green';
+        form.reset();
+        previewDiv.innerHTML = '';
+    };
+</script>
+</body>
+</html>
