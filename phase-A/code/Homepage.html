@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Used Car Trading Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        body {
+            background-image: url("https://picsum.photos/id/1071/1920/1080");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.85);
+            z-index: -1;
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #222;
+            color: white;
+            padding: 12px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+        .logo {
+            height: 40px;
+        }
+        .logo-link {
+            display: inline-flex;
+            line-height: 0;
+            text-decoration: none;
+        }
+        .logo-link:hover {
+            opacity: 0.9;
+        }
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 6px 10px;
+        }
+        .nav-menu a:hover {
+            background: #444;
+            border-radius: 4px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .page-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #222;
+        }
+        .box-group {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .box {
+            border: 2px solid #333;
+            padding: 30px;
+            background: linear-gradient(135deg, #bfdbfe 0%, #eff6ff 100%);
+            border-radius: 6px;
+        }
+        .box h2 {
+            margin-bottom: 15px;
+            color: #c0392b;
+        }
+        .box p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #333;
+        }
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 10px;
+                padding: 15px;
+            }
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="Homepage.html" class="logo-link" title="Back to home">
+            <img src="logo.png" alt="Platform LOGO" class="logo">
+        </a>
+        <div class="nav-menu">
+            <a href="SearchPage.html">Search Cars</a>
+            <a href="login.html">Login</a>
+            <a href="add%20cars%28final%20version%29.html">Post a Car</a>
+        </div>
+    </div>
+    <div class="container">
+        <h1 class="page-title">Used Car Trading Platform - Choose Reliable Cars with Confidence</h1>
+        <div class="box-group">
+            <div class="box">
+                <h2>About Us</h2>
+                <p>Our platform is committed to providing safe, transparent and efficient used car trading services for buyers and sellers. All vehicles undergo strict inspections to eliminate accident cars, flooded cars and fire-damaged cars, so buyers can purchase with confidence and sellers can sell with peace of mind.</p>
+            </div>
+            <div class="box">
+                <h2>Buyer Services</h2>
+                <p>Buyers can quickly find their favorite models through search, supporting online viewing, test drive appointments and price comparison. The platform provides one-stop services including third-party inspection reports, auto loans and transfer assistance.</p>
+            </div>
+            <div class="box">
+                <h2>Seller Services</h2>
+                <p>Sellers can post car information for free in the "Post a Car" section, fill in vehicle details, upload photos and set prices. The platform has a large number of precise buyers, ensuring fast transactions with transparent prices and no hidden fees.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
